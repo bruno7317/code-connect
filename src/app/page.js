@@ -1,3 +1,5 @@
+import style from './page.module.css'
+
 import logger from "@/logger";
 import { CardPost } from "./components/CardPost";
 import Link from "next/link";
@@ -32,12 +34,12 @@ export default async function Home({ searchParams }) {
   const { data: posts, prev, next } = await getAllPosts(currentPage)
   return (
     <main>
-      <section className="carousel">
+      <section className={style.carousel}>
         {posts.map( post => <CardPost key={post.id} post={post} />)}
       </section>
-      <div className="navigation">
-        {prev && <Link className="previous_link" href={`/?page=${prev}`}>Previous Page</Link>}
-        {next && <Link className="next_link" href={`/?page=${next}`}>Next Page</Link>}
+      <div className={style.navigation}>
+        {prev && <Link className={style.previous_link} href={`/?page=${prev}`}>Previous Page</Link>}
+        {next && <Link className={style.next_link} href={`/?page=${next}`}>Next Page</Link>}
       </div>
     </main>
   );

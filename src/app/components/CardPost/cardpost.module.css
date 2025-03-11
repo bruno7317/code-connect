@@ -28,3 +28,7 @@
 .paragraph {
     margin: auto;
 }
+
+.link {
+    text-decoration: none;
+}
