@@ -1,4 +1,6 @@
+import logger from "@/logger";
 import { CardPost } from "./components/CardPost";
+import Link from "next/link";
 
 const post = {
   "id": 1,
@@ -15,10 +17,28 @@ const post = {
   }
 }
 
-export default function Home() {
+async function getAllPosts(page) {
+  const response = await fetch(`http://localhost:3042/posts?_page=${page}&_per_page=6`)
+  if (!response.ok) {
+    logger.error('Oops, something went wrong!')
+  } else {
+    logger.info('Posts retrieved successfully.')
+  }
+  return response.json()
+}
+
+export default async function Home({ searchParams }) {
+  const currentPage = searchParams?.page || 1
+  const { data: posts, prev, next } = await getAllPosts(currentPage)
   return (
     <main>
-      <CardPost post={post} />
+      <section className="carousel">
+        {posts.map( post => <CardPost key={post.id} post={post} />)}
+      </section>
+      <div className="navigation">
+        {prev && <Link className="previous_link" href={`/?page=${prev}`}>Previous Page</Link>}
+        {next && <Link className="next_link" href={`/?page=${next}`}>Next Page</Link>}
+      </div>
     </main>
   );
 }

@@ -10,5 +10,33 @@ body {
   margin: 56px auto;
   display: flex;
   gap: 28px;
-  height: 100vh;
+}
+
+.carousel {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.navigation {
+  padding-top: 2vw;
+  height: 2vw;
+  position: relative;
+}
+
+.next_link {
+  text-decoration: none;
+  color: gray;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.previous_link {
+  text-decoration: none;
+  color: gray;
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }
