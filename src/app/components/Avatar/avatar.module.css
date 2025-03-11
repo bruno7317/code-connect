@@ -1,0 +1,7 @@
+.avatar {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+    padding: 3%;
+    margin: auto;
+}
