@@ -5,6 +5,7 @@ import { remark } from "remark";
 import html from 'remark-html'
 import db from '../../../../prisma/db';
 import { redirect } from 'next/navigation';
+import Image from 'next/image';
 
 async function getPostBySlug(slug) {
   try {
@@ -41,6 +42,13 @@ const PagePost = async ({ params }) => {
     const post = await getPostBySlug(slug)
     return (
         <section className={style.title}>
+            <Image
+                className={style.cover_image}
+                src={post.cover} 
+                width={438} 
+                height={133} 
+                alt={"Post's Cover"} 
+            />
             <h1>{post.title}</h1>
             <p>{post.body}</p>
             <div dangerouslySetInnerHTML={{ __html: post.markdown}} />

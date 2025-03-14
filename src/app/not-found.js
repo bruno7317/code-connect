@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import style from './error/error.module.css'
-import banner from './not-found/404.png'
+import banner from './error/404.png'
 import { Heading } from './components/Heading'
 import Link from 'next/link'
 import { ArrowBack } from './components/icons/ArrowBack'
